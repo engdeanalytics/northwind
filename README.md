@@ -13,7 +13,7 @@ Este projeto é um projeto exemplo de conceitos do dbt usando os dados da Northw
 3. Acesse o repositório:
 
 ```
-cd northwind
+cd academy-2022-11
 ```
 
 4. Você deverá configurar um *profile* para o seu DW adicionando o seguinte trecho de código no arquivo `~/.dbt/profiles.yml` (lembre-se de alterar as variáveis específicas para seu projeto):
