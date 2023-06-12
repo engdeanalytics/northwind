@@ -1,0 +1,17 @@
+
+version: 2
+
+sources:
+  - name: erp
+    description: Fonte do PDV da Northwind
+    schema: erp_northwind
+    tables:
+
+      - name: employees
+        description: Tabela com informações de funcionários
+        columns:
+          - name: employee_id
+            description: Chave primária da tabela funcionários
+            tests:
+              - unique
+              - not_null
