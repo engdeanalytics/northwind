@@ -9,9 +9,9 @@ WITH
     renomear AS (
         SELECT
             cast(employee_id AS int) AS id_funcionario
-            , cast(last_name AS string) AS func_sobrenome
-            , cast(first_name AS string) AS func_nome					
-            , cast(birth_date AS date) AS func_dt_nascimento	
+            , cast(reports_to AS int) AS id_gerente
+            , cast(first_name || " " || last_name AS string) AS func_nome
+            , cast(birth_date AS date) AS func_dt_nascimento
             , cast(hire_date AS date) AS func_dt_contratacao
             , cast(address AS string) AS func_endereco
             , cast(city AS string) AS func_cidade
@@ -19,7 +19,6 @@ WITH
             , cast(postal_code AS string) AS func_cep
             , cast(country AS string) AS func_pais
             , cast(notes AS string) AS func_notas
-            , cast(reports_to AS int) AS id_gerente
         FROM
             fonte_funcionarios
     )
