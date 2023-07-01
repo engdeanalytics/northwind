@@ -2,6 +2,7 @@ WITH
     source_employees AS (
         SELECT
             cast(employee_id as int) as funcionario_id
+            ,reports_to as gerente_id
             ,cast(last_name as string)	as sobrenome
             ,cast(first_name as string)	as nome
             ,cast(first_name || ' ' || last_name as string) as  nome_completo
@@ -18,7 +19,6 @@ WITH
             --,extension
             --,photo
             ,notes as notas
-            ,reports_to as gerente_id
             --,photo_path
         FROM {{ source('erp', 'employees') }}
     )
