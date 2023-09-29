@@ -1,7 +1,7 @@
 with
     fonte_categories as (
-        select 
+        select *
         from {{ source('erp', 'categories') }}
     )
 
-select * from fonte_categories    
+select * from fonte_categories   
