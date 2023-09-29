@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dim_employees
+    description: dim de func northwind.
+    columns:
+      - name: funcionario_id
+        description: chave primaria da tabela
+        tests:
+          - unique
+          - not_null
+               
+      - name: gerente_id         
+        description: aa
+
+      - name: sobrenome
+        description: aa
+
+      - name: nome
+        description: aa
+
+      - name: nome_completo
+        description: aa
+
+      - name: Nome_gerente
+        description: aa
+
+      - name: data_nasc
+        description: aa
+
+      - name: data_contratacao
+        description: aa
+
+      - name: endereco
+        description: aa
+
+      - name: cidade
+        description: aa
+
+      - name: regiao
+        description: aa
+
+      - name: cep
+        description: aa
+
+      - name: pais
+        description: aa
+
+      - name: notas
+        description: aa
