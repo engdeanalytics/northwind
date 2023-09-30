@@ -12,4 +12,5 @@ with
             , cast(postal_code as string) as cep_fornecedor
         from {{ source('erp', 'suppliers') }}
     )
-select * from fonte_fornecedores
+select *
+from fonte_fornecedores
