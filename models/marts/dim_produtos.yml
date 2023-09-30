@@ -1,0 +1,50 @@
+version: 2
+models:
+  - name: dim_produtos
+    description: Essa é a dimensão com informações dos clientes da northwind.
+    columns:
+      - name: pk_produto
+        description: Essa é a chave primaria da dimensão produtos.
+        tests:
+          - unique
+          - not_null
+      - name: id_produto
+        description: COMPLETAR DOCUMENTACAO
+      - name: id_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: id_categoria
+        description: COMPLETAR DOCUMENTACAO
+      - name: nome_produto
+        description: COMPLETAR DOCUMENTACAO
+      - name: quantidade_por_unidade
+        description: Quantidade em gramas ou unidades por produto ou pacote.
+      - name: preco_por_unidade
+        description: COMPLETAR DOCUMENTACAO
+      - name: unidades_em_estoque
+        description: COMPLETAR DOCUMENTACAO
+      - name: unidades_por_ordem
+        description: COMPLETAR DOCUMENTACAO
+      - name: nivel_reabastecimento
+        description: COMPLETAR DOCUMENTACAO
+      - name: is_discontinuado
+        description: COMPLETAR DOCUMENTACAO
+      - name: nome_categoria
+        description: COMPLETAR DOCUMENTACAO
+      - name: descricao_categoria
+        description: COMPLETAR DOCUMENTACAO
+      - name: nome_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: contato_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: contato_funcao
+        description: COMPLETAR DOCUMENTACAO
+      - name: endereco_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: cidade_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: regiao_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: pais_fornecedor
+        description: COMPLETAR DOCUMENTACAO
+      - name: cep_fornecedor
+        description: COMPLETAR DOCUMENTACAO
