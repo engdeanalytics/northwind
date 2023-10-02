@@ -1,0 +1,9 @@
+default:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth
+      project: 979102557447
+      dataset: northwind-projeto-dw-400313
+      schema: dbt_cleber_guimaraes
