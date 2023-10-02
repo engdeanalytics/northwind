@@ -6,5 +6,5 @@ sources:
     schema: erp_northwind
     tables:
       - name: products
-      - name: categorias
+      - name: categories
       - name: suppliers 
