@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: fct_vendas
+    description: Tabela com fatos de vendas cada linha descreve informações de um produto vendido.
+    columns:
+      - name: sk_pedido_item
+        description: Chave surrogate da tabela fatos vendas.
+        tests:
+          - not_null
+          - unique
+      - name: frete_ponderado
+        description: Métrica criada dividindo o frete pelo número de produtos diferentes naquela nota fiscal.
+      - name: total_bruto
+        description: Valor da quantidade vezes o preço unitário sem descontos.

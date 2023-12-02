@@ -10,4 +10,4 @@ sources:
     - name: suppliers
     - name: employees
     - name: orders
-    - name: order_detail
+    - name: order_details
