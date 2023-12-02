@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: erp
+    description: Fonte SAP
+    schema: erp_northwind
+    tables:
+    - name: products     
+    - name: categories
+    - name: suppliers
+    - name: employees
+    - name: orders
+    - name: order_detail
