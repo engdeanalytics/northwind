@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: dim_funcionarios
+    description: Dimensão de funcionários da Northwind. Relação de funcionários e gerentes e dados dos funcionários.
+    columns:
+      - name: id_funcionario
+        description: preencher
+        tests:
+          - unique
+          - not_null
+
+      - name: id_gerente
+        description: preencher
+
+      - name: nome_funcionario
+        description: preencher
+
+      - name: nome_funcionario_1
+        description: preencher
+
+      - name: cargo_funcionario
+        description: preencher
+
+      - name: dt_nascimento_funcionario
+        description: preencher
+
+      - name: dt_contratacao
+        description: preencher
+
+      - name: cidade_funcionario
+        description: preencher
+
+      - name: regiao_funcionario
+        description: preencher
+
+      - name: pais_funcionario
+        description: preencher
+
+      - name: informacoes_funcionario
+        description: preencher
+
