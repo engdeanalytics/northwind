@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: int_vendas__pedido_itens
+    description: Tabela de vendas intermediária criada a partir da junção entre orders e order_details
+    columns:
+      - name: sk_pedido_item
+        description: Chave surrogate da tabela pedido itens
+        tests:
+          - unique
+          - not_null
+          
