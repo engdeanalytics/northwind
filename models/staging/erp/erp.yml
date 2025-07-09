@@ -1,0 +1,9 @@
+
+sources:
+  - name: erp
+    database: fea25_05
+    schema: raw_northwind
+    tables:
+     - name: category
+     - name: products
+     - name: suppliers

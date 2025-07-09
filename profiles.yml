@@ -1,0 +1,16 @@
+dbt_northwind: # This must match the 'profile' name in your dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: ejb52940.us-east-1
+      database: FEA25_05
+      warehouse: ACADEMY_WAREHOUSE
+      role: FEA_STUDENT
+      user: THIAGO_GARCIA
+      password: 85f7AEmwjvF#gj(4xYue
+      schema: dbt_thiago_garcia
+
+      autocommit: True
+      threads: 4
+      client_session_keep_alive: False
