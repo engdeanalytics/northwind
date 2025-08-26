@@ -10,23 +10,29 @@ Antes de começar, você precisa ter instalado:
 
 - Python 3.7 ou superior
 - [dbt Core](https://docs.getdbt.com/docs/installation) ou [dbt cloud](https://cloud.getdbt.com/)
-- Acesso a um Data Warehouse compatível com dbt (Databricks, Snowflake, BigQuery, etc.)
+- Acesso a um Data Warehouse [compatível com dbt](https://docs.getdbt.com/docs/trusted-adapters) (este tutorial usa [Databricks](https://www.databricks.com/learn/free-edition) como exemplo)
 
 ### Instruções
 
-1. Clone este repositório.
+1. Faça um fork deste repositório
+
+Clique no botão "Fork" no GitHub para criar uma cópia na sua conta.
+
+2. Clone o repositório
 
 ```
-git clone https://github.com/engdeanalytics/northwind.git
+git clone https://github.com/SEU-USUARIO/northwind.git
 ```
    
-2. Acesse o repositório:
+3. Acesse o repositório:
 
 ```
 cd northwind
 ```
 
-3. Você deverá configurar um *profile* para o seu DW adicionando o seguinte trecho de código no arquivo `~/.dbt/profiles.yml` (lembre-se de alterar as variáveis específicas para seu projeto):
+4. Configure seu profile do dbt
+
+Você deverá configurar um *profile* para o seu DW adicionando o seguinte trecho de código no arquivo `~/.dbt/profiles.yml` (lembre-se de alterar as variáveis específicas para seu projeto):
 
 ```yaml
 northwind:
@@ -41,7 +47,7 @@ northwind:
       token: dapiXXXXXXXXXXXXXXXXXXXXXXX  # Substitua pelo seu token de acesso
 ```
 
-4. Em seguida, teste se a configuração está correta:
+5. Em seguida, teste se a configuração está correta:
 
 ```bash
 dbt debug
@@ -52,7 +58,9 @@ dbt debug
 All checks passed!
 ```
 
-5. (opcional) Se você não fez a ingestão dos dados brutos para o data warehouse, pode fazê-lo utilizando o `dbt seed` (esta prática não é recomendada em projetos reais, somente usada aqui para fins educacionais):
+6. Carregue os dados
+
+(opcional) Se você não fez a ingestão dos dados brutos para o data warehouse, pode fazê-lo utilizando o `dbt seed` (esta prática não é recomendada em projetos reais, somente usada aqui para fins educacionais):
 
 ```
 dbt seed
