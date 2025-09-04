@@ -2,71 +2,78 @@ Bem-vindo ao projeto demo da Northwind!
 
 ### O que é este projeto?
 
-Este é um projeto exemplo de conceitos do dbt usando os dados da Northwind.
+Este é um projeto exemplo de conceitos abordados no livro [Engenharia de Analytics](https://www.engdeanalytics.com.br/intro.html) usando os dados da Northwind com dbt Cloud e Databricks.
 
 ### Pré-requisitos
 
-Antes de começar, você precisa ter instalado:
+Antes de começar, certifique-se de que você possui:
 
-- Python 3.7 ou superior
-- [dbt Core](https://docs.getdbt.com/docs/installation) ou [dbt cloud](https://cloud.getdbt.com/)
-- Acesso a um Data Warehouse [compatível com dbt](https://docs.getdbt.com/docs/trusted-adapters) (este tutorial usa [Databricks](https://www.databricks.com/learn/free-edition) como exemplo)
+- [ ] Uma conta ativa no [Databricks](https://www.databricks.com/learn/free-edition)
+- [ ] Um SQL Warehouse configurado no seu workspace Databricks
+- [ ] Uma conta no [GitHub](https://github.com/)
 
 ### Instruções
 
-1. Faça um fork deste repositório
+#### 1. Faça um fork deste repositório
 
-Clique no botão "Fork" no GitHub para criar uma cópia na sua conta.
+Clique no botão *Fork* no canto superior direito desta página para criar uma cópia deste repositório em sua conta do GitHub.
 
-2. Clone o repositório
+#### 2. Crie uma conta no dbt Cloud
 
-```
-git clone https://github.com/SEU-USUARIO/northwind.git
-```
-   
-3. Acesse o repositório:
+Acesse [dbt Cloud](https://www.getdbt.com/signup) e complete o cadastro.
 
-```
-cd northwind
-```
+#### 3. Configure um ambiente de desenvolvimento no dbt Cloud
 
-4. Configure seu profile do dbt
+- Escolha um nome para o seu projeto (exemplo: "northwind-demo")
+- Selecione o Databricks como adaptador
+- Preencha as informações do seu workspace Databricks:
 
-Você deverá configurar um *profile* para o seu DW adicionando o seguinte trecho de código no arquivo `~/.dbt/profiles.yml` (lembre-se de alterar as variáveis específicas para seu projeto):
+  > **Onde encontrar os dados de conexão:**
+  > No Databricks, navegue até *SQL Warehouses* → seu warehouse → *Connection Details*
 
-```yaml
-northwind:
-  target: dev
-  outputs:
-    dev:
-      type: databricks
-      catalog: workspace
-      schema: default
-      host: YOURORG.databrickshost.com  # Substitua pelo seu host
-      http_path: /SQL/YOUR/HTTP/PATH  # Substitua pelo seu path HTTP
-      token: dapiXXXXXXXXXXXXXXXXXXXXXXX  # Substitua pelo seu token de acesso
-```
+- **Server Hostname:** O hostname do seu servidor (exemplo: `dbc-xxxxxxxx-xxxx.cloud.databricks.com`).
+- **HTTP Path:** O caminho HTTP do seu SQL Warehouse. (exemplo: `/sql/1.0/warehouses/xxxxx`)
+- **Optional settings → Catalog:** Preencha com `main` ou o catálogo que deseja utilizar.
+- **Token:** Para criar um access token pessoal no Databricks:
+  - No workspace do Databricks, clique em seu nome de usuário na barra superior
+  - Vá em *Settings* → *Developer* → *Access tokens* → *Manage* → *Generate new token*
+  - Copie o token gerado e cole no campo correspondente no dbt Cloud
+- Clique em *Test Connection*. Se tudo estiver certo, você verá a mensagem de sucesso.
 
-5. Em seguida, teste se a configuração está correta:
+#### 4.	Conecte o dbt Cloud ao seu repositório GitHub
 
-```bash
-dbt debug
+- No dbt Cloud, vá para *Account Settings* → *Integrations* → *GitHub*
+- Autorize a conexão e selecione o repositório forkado
 
-(...)
-  Connection test: [OK connection ok]
+#### 5. Carregue os dados iniciais
 
-All checks passed!
-```
-
-6. Carregue os dados
-
-(opcional) Se você não fez a ingestão dos dados brutos para o data warehouse, pode fazê-lo utilizando o `dbt seed` (esta prática não é recomendada em projetos reais, somente usada aqui para fins educacionais):
+No dbt Cloud Studio, execute:
 
 ```
 dbt seed
 ```
 
-Pronto! Você tem um projeto dbt configurado e com dados disponíveis no Data Warehouse.
+  > **Nota:** O dbt seed é usado aqui apenas para fins educacionais. Em projetos reais, os dados devem ser ingeridos através de ferramentas apropriadas.
 
-### Saiba mais:
-- Aprenda mais sobre o dbt [na documentação oficial](https://docs.getdbt.com/docs/introduction)
+#### 6.	Teste o setup completo
+
+No dbt Cloud Studio, execute:
+
+```
+dbt debug
+```
+
+Se tudo estiver certo, você verá:
+
+```
+Connection test: [OK connection ok]
+All checks passed!
+```
+
+Pronto!
+
+### Saiba mais
+- [Documentação oficial do dbt](https://docs.getdbt.com/docs/introduction)
+- [Documentação do Databricks](https://docs.databricks.com/)
+- [Integração do dbt Cloud com GitHub](https://docs.getdbt.com/docs/cloud/git/connect-github)
+- [Integração do dbt Cloud com Databricks](https://docs.getdbt.com/docs/core/connect-data-platform/databricks-setup)
