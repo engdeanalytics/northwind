@@ -1,0 +1,220 @@
+version: 2
+
+sources:
+  - name: erp
+    description: Northwind sales system.
+    schema: erp_northwind
+    database: raw
+    tables:
+      - name: categories
+        description: Contains product category definitions such as name and description.
+        columns:
+          - name: id
+            description: Unique identifier for each category.
+            data_tests:
+              - unique
+              - not_null
+          - name: categoryname
+            description: Descriptive name of the category (e.g. Beverages).
+          - name: description
+            description: Additional notes about the category.
+          - name: picture
+            description: Binary image associated with the category.
+
+      - name: products
+        description: Contains information about all products sold, including pricing and inventory levels.
+        columns:
+          - name: id
+            description: Unique identifier for each product.
+            data_tests:
+              - unique
+              - not_null
+          - name: productname
+            description: Name of the product shown to customers.
+          - name: supplierid
+            description: Foreign key referencing the supplier that provides the product.
+          - name: categoryid
+            description: Foreign key referencing the product category.
+          - name: quantityperunit
+            description: Text describing the packaging (e.g. 24 - 12 oz bottles).
+          - name: unitprice
+            description: List price charged per unit.
+          - name: unitsinstock
+            description: Units currently on hand in inventory.
+          - name: unitsonorder
+            description: Units that are on purchase orders but not yet received.
+          - name: reorderlevel
+            description: Quantity threshold that triggers a replenishment order.
+          - name: discontinued
+            description: Flag indicating whether the product is no longer sold.
+
+      - name: suppliers
+        description: Contains information about product suppliers such as company name and location.
+        columns:
+          - name: id
+            description: Unique identifier for each supplier.
+            data_tests:
+              - unique
+              - not_null
+          - name: companyname
+            description: Official name of the supplier company.
+          - name: contactname
+            description: Primary contact person at the supplier.
+          - name: contacttitle
+            description: Job title of the contact person.
+          - name: address
+            description: Mailing street address of the supplier.
+          - name: city
+            description: City where the supplier is located.
+          - name: region
+            description: Region or state where the supplier is located.
+          - name: postalcode
+            description: Postal code for the supplier address.
+          - name: country
+            description: Country where the supplier operates.
+          - name: phone
+            description: Primary phone number for the supplier.
+          - name: fax
+            description: Fax number for the supplier.
+          - name: homepage
+            description: Web site or additional notes about the supplier.
+
+      - name: employees
+        description: Contains employee details including name, title, and reporting structure.
+        columns:
+          - name: id
+            description: Unique identifier for each employee.
+            data_tests:
+              - unique
+              - not_null
+          - name: lastname
+            description: Employee's last name.
+          - name: firstname
+            description: Employee's first name.
+          - name: title
+            description: Employee's job title.
+          - name: titleofcourtesy
+            description: Honorific used in salutations (e.g. Mr., Ms.).
+          - name: birthdate
+            description: Date of birth for the employee.
+          - name: hiredate
+            description: Date the employee was hired.
+          - name: address
+            description: Street address of the employee.
+          - name: city
+            description: City where the employee lives.
+          - name: region
+            description: Region or state where the employee lives.
+          - name: postalcode
+            description: Postal or ZIP code for the employee address.
+          - name: country
+            description: Country where the employee resides.
+          - name: homephone
+            description: Personal contact phone number.
+          - name: extension
+            description: Internal extension on the corporate phone system.
+          - name: photo
+            description: Binary photo of the employee.
+          - name: notes
+            description: Additional notes about the employee.
+          - name: reportsto
+            description: Foreign key referencing the employee's manager.
+          - name: photopath
+            description: Link to the employee's picture on disk.
+
+      - name: orders
+        description: Contains records of customer orders including order date, ship date, and freight costs.
+        columns:
+          - name: id
+            description: Unique identifier for each order.
+            data_tests:
+              - unique
+              - not_null
+          - name: customerid
+            description: Foreign key referencing the ordering customer.
+          - name: employeeid
+            description: Foreign key referencing the sales representative.
+          - name: orderdate
+            description: Date the order was placed.
+          - name: requireddate
+            description: Date the customer requested delivery.
+          - name: shippeddate
+            description: Date the order actually shipped.
+          - name: shipvia
+            description: Foreign key referencing the shipping company used.
+          - name: freight
+            description: Shipping charges billed for the order.
+          - name: shipname
+            description: Recipient name listed on the shipment.
+          - name: shipaddress
+            description: Street address for delivery.
+          - name: shipcity
+            description: City of the delivery address.
+          - name: shipregion
+            description: Region or state of the delivery address.
+          - name: shippostalcode
+            description: Postal code of the delivery address.
+          - name: shipcountry
+            description: Country of the delivery address.
+
+      - name: orders_detail
+        description: Line items for each order including product, quantity, unit price, and discount.
+        data_tests:
+          - dbt_utils.unique_combination_of_columns:
+              arguments:
+                combination_of_columns:
+                  - orderid
+                  - productid
+        columns:
+          - name: orderid
+            description: Foreign key referencing the order header.
+          - name: productid
+            description: Foreign key referencing the product sold on the line.
+          - name: unitprice
+            description: Unit price charged for the line item at the time of sale.
+          - name: quantity
+            description: Number of units sold on the line.
+          - name: discount
+            description: Discount percentage applied to the line (0-1).
+
+      - name: shippers
+        description: Contains information about shipping companies used to deliver orders.
+        columns:
+          - name: id
+            description: Unique identifier for each shipper.
+            data_tests:
+              - unique
+              - not_null
+          - name: companyname
+            description: Name of the shipping company.
+          - name: phone
+            description: Primary phone number for the shipper.
+
+      - name: customers
+        description: Contains customer data including company name and address.
+        columns:
+          - name: id
+            description: Unique identifier for each customer.
+            data_tests:
+              - unique
+              - not_null
+          - name: companyname
+            description: Name of the customer's company.
+          - name: contactname
+            description: Primary individual to contact at the customer.
+          - name: contacttitle
+            description: Job title for the customer contact.
+          - name: address
+            description: Street address of the customer.
+          - name: city
+            description: City where the customer is located.
+          - name: region
+            description: Region or state where the customer operates.
+          - name: postalcode
+            description: Postal code of the customer address.
+          - name: country
+            description: Country where the customer is based.
+          - name: phone
+            description: Primary phone number for the customer.
+          - name: fax
+            description: Fax number for the customer.
