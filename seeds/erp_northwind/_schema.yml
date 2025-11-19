@@ -1,0 +1,110 @@
+version: 2
+
+seeds:
+  - name: categories
+    config:
+      column_types:
+        id: string
+        categoryname: string
+        description: string
+
+  - name: customers
+    config:
+      column_types:
+        id: string
+        companyname: string
+        contactname: string
+        contacttitle: string
+        address: string
+        city: string
+        region: string
+        postalcode: string
+        country: string
+        phone: string
+        fax: string
+
+  - name: employees
+    config:
+      column_types:
+        id: string
+        lastname: string
+        firstname: string
+        title: string
+        titleofcourtesy: string
+        birthdate: string
+        hiredate: string
+        address: string
+        city: string
+        region: string
+        postalcode: string
+        country: string
+        homephone: string
+        extension: string
+        photo: string
+        notes: string
+        reportsto: string
+        photopath: string
+
+  - name: orders
+    config:
+      column_types:
+        id: string
+        customerid: string
+        employeeid: string
+        orderdate: string
+        requireddate: string
+        shippeddate: string
+        shipvia: string
+        freight: string
+        shipname: string
+        shipaddress: string
+        shipcity: string
+        shipregion: string
+        shippostalcode: string
+        shipcountry: string
+
+  - name: orders_detail
+    config:
+      column_types:
+        orderid: string
+        productid: string
+        unitprice: string
+        quantity: string
+        discount: string
+
+  - name: products
+    config:
+      column_types:
+        id: string
+        productname: string
+        supplierid: string
+        categoryid: string
+        quantityperunit: string
+        unitprice: string
+        unitsinstock: string
+        unitsonorder: string
+        reorderlevel: string
+        discontinued: string
+
+  - name: shippers
+    config:
+      column_types:
+        id: string
+        companyname: string
+        phone: string
+
+  - name: suppliers
+    config:
+      column_types:
+        id: string
+        companyname: string
+        contactname: string
+        contacttitle: string
+        address: string
+        city: string
+        region: string
+        postalcode: string
+        country: string
+        phone: string
+        fax: string
+        homepage: string
