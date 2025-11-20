@@ -5,7 +5,7 @@ models:
     description: Standardized supplier dimension attributes sourced from the ERP system.
     columns:
       - name: supplier_pk
-        description: Surrogate primary key for the supplier.
+        description: Natural primary key carried over from the ERP suppliers table.
         data_tests:
           - unique
           - not_null

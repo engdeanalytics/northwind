@@ -5,7 +5,7 @@ models:
     description: List of shippers standardized for use in the dimensional model.
     columns:
       - name: shipper_pk
-        description: Surrogate primary key for the shipping company.
+        description: Natural primary key coming from the ERP shippers table.
         data_tests:
           - unique
           - not_null

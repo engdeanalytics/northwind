@@ -5,7 +5,7 @@ models:
     description: Employee details enriched with manager relationships and consistent typing.
     columns:
       - name: employee_pk
-        description: Surrogate primary key for the employee.
+        description: Natural primary key provided by the ERP employees table.
         data_tests:
           - unique
           - not_null

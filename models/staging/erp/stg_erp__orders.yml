@@ -5,7 +5,7 @@ models:
     description: Cleansed order headers with consistent naming for downstream facts.
     columns:
       - name: order_pk
-        description: Surrogate primary key for the order.
+        description: Natural primary key coming from the ERP orders table.
         data_tests:
           - unique
           - not_null

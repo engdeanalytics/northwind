@@ -5,7 +5,7 @@ models:
     description: Cleans and renames ERP category data for downstream dimensional models.
     columns:
       - name: category_pk
-        description: Surrogate primary key for the category.
+        description: Natural primary key from the ERP categories table.
         data_tests:
           - unique
           - not_null

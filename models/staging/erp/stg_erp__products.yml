@@ -5,7 +5,7 @@ models:
     description: Product attributes shaped for dimensional consumption with consistent typing.
     columns:
       - name: product_pk
-        description: Surrogate primary key for the product.
+        description: Natural primary key coming from the ERP products table.
         data_tests:
           - unique
           - not_null
