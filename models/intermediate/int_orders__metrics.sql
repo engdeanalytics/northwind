@@ -10,7 +10,6 @@ with
             , sum(quantity) as total_quantity
             , sum(gross_total) as gross_total
             , sum(net_total) as net_total
-            , max(freight) as freight_total
             , count(*) as line_item_count
             , max(case when had_discount then 1 else 0 end) as had_discount_flag
         from order_items_metrics
@@ -31,7 +30,7 @@ select
     , orders.order_date
     , orders.ship_date
     , orders.required_delivery_date
-    , coalesce(aggregated_line_metrics.freight_total, orders.freight) as freight_total
+    , orders.freight as freight_total
     , coalesce(aggregated_line_metrics.total_quantity, 0) as total_quantity
     , coalesce(aggregated_line_metrics.gross_total, 0) as gross_total
     , coalesce(aggregated_line_metrics.net_total, 0) as net_total

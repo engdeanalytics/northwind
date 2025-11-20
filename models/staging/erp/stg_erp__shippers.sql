@@ -7,7 +7,7 @@ with
     , renamed as (
         select
             cast(id as int) as shipper_pk
-            , cast(companyname as varchar) as shipper_name
+            , cast(companyname as string) as shipper_name
         from source_shippers
     )
 

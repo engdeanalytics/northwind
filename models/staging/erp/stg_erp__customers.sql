@@ -6,11 +6,11 @@ with
 
     , renamed as (
         select
-            cast(id as varchar) as customer_pk
-            , cast(companyname as varchar) as customer_company_name
-            , cast(city as varchar) as customer_city
-            , cast(region as varchar) as customer_region
-            , cast(country as varchar) as customer_country
+            cast(id as string) as customer_pk
+            , cast(companyname as string) as customer_company_name
+            , cast(city as string) as customer_city
+            , cast(region as string) as customer_region
+            , cast(country as string) as customer_country
         from source_customers
     )
 
