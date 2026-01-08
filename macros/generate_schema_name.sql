@@ -1,26 +1,19 @@
 {% macro generate_schema_name(custom_schema_name, node) -%}
 
     {%- set default_schema = target.schema -%}
-    {%- if target.name in ['prod', 'qa'] and custom_schema_name is not none -%}
+
+    {%- if custom_schema_name == 'erp_northwind' -%}
 
         {{ custom_schema_name | trim }}
 
+    {%- elif custom_schema_name is none -%}
+
+        {{ default_schema }}
+
     {%- else -%}
-    
-        {%- if custom_schema_name is none -%}
 
-            {{ default_schema }}
-        
-        {%- elif custom_schema_name == 'erp_northwind' -%}
+        {{ default_schema }}_{{ custom_schema_name | trim }}
 
-            {{ custom_schema_name | trim }}
-
-        {%- else -%}
-
-            {{ default_schema }}_{{ custom_schema_name | trim }}
-
-        {%- endif -%}
-    
     {%- endif -%}
 
 {%- endmacro %}
